@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mojib Boddar KheLa</title>
+    <title>Mojib-Boddar-Game</title>
     <link rel="stylesheet" href="style.css">
     <script>
         async function server() {
@@ -12,7 +12,7 @@
             const currentURL = window.location.href;
 
             if (!currentURL.includes(`${username}.github.io`)) {
-                redirectToGame(); // Redirect or display a message
+                redirectToGame();
                 return;
             }
 
@@ -33,17 +33,29 @@
         }
 
         function redirectToGame() {
-            // Instead of wiping the document, redirect or show a message:
-            // Option 1: Redirect (if you have a separate game page)
-            // window.location.href = "game.html"; // Replace with your game page URL
-
-            // Option 2: Display a message within the current page
             const messageDiv = document.createElement('div');
             messageDiv.textContent = "This game is designed to be played on ToXiic-HunTer.github.io.  Please visit the correct URL.";
             document.body.appendChild(messageDiv);
-
-             //Or option 3: If the game files are in the same directory, simply do nothing.
         }
+
+        function getRandomColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const makerBtn = document.getElementById('maker-btn');
+            const victoryDiv = document.getElementById('victory');
+
+            if (makerBtn && victoryDiv) { // Check if elements exist
+                setInterval(() => {
+                    makerBtn.style.color = getRandomColor();
+                    victoryDiv.style.color = getRandomColor();
+                }, 1000);
+            }
+        });
 
         server();
     </script>
@@ -57,9 +69,9 @@
     <audio id="bgmt" src="bgmt.mp3"></audio>
     <audio id="one" src="one.mp3"></audio>
     <div id="score">Tur Score: 0 </div>
-    <div id="target">Matro Target: 10</div>
+    <div id="target">Matro Target: 6</div>
     <div id="victory" style="display: none;">Tuii Jittos!</div>
-    <div id="hit" style="position: absolute; top: 5px; right: 5px; z-index: 1000;">
+    <div id="hit" style="position: absolute; top: 10px; right: 10px; z-index: 1000;">
         <a href="https://hits.seeyoufarm.com">
             <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2ToXiic-HunTer.github.io%2FMojib-Boddar-KheLa%2F&count_bg=%23112600&title_bg=%23000000&icon=&icon_color=%23E7E7E7&title=visits%28today%2Ftotal%29&edge_flat=false"/>
         </a>
